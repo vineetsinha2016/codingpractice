@@ -28,9 +28,9 @@ import java.util.Stack;
  * Output: true
  */
 public class Problem4_ValidParentheses {
-     static boolean isValid(String s) {
+     private static boolean isValid(String s) {
          if (s!=null) {
-             if (s.equals(" ") || s.equals("")) return true;
+             if (s.trim().equals("")) return true;
              HashMap<Character, Character> hashMap = new HashMap<>();
              hashMap.put('(',')');hashMap.put('{','}');hashMap.put('[',']');
              Stack<Character> stack = new Stack<>();
