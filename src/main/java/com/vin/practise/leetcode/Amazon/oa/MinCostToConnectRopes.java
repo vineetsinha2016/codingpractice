@@ -1,9 +1,7 @@
 package com.vin.practise.leetcode.Amazon.oa;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Given n ropes of different lengths, we need to connect these ropes into one rope. We can connect only 2 ropes at a time.
@@ -43,13 +41,11 @@ import java.util.PriorityQueue;
  */
 public class MinCostToConnectRopes {
     public static void main (String[] args) {
-        Integer[] ropes ={2, 2, 3, 3};
+        int[] ropes ={2, 2, 3, 3};
         System.out.println("Result-->"+minPossibleCost(ropes));
     }
-    static Integer minPossibleCost(Integer[] ropes) {
-        List<Integer> ropesList = new ArrayList<>();
-        Collections.addAll(ropesList,ropes);
-        PriorityQueue<Integer> queue = new PriorityQueue<>(ropesList);
+    static Integer minPossibleCost(int[] ropes) {
+        PriorityQueue<Integer> queue = Arrays.stream(ropes).boxed().collect(Collectors.toCollection(PriorityQueue::new));
         int total =0;
         while (queue.size()>1) {
             int temp = queue.poll() + queue.poll();
