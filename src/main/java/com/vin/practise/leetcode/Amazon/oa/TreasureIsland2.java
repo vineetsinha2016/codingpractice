@@ -74,7 +74,7 @@ public class TreasureIsland2 {
         return allS;
     }
     static boolean isValidToAdd (char[][] input, int r, int c) {
-        return r > 0 && r < input.length && c > 0 && c < input.length && input[r][c] != 'D';
+        return r >= 0 && r < input.length && c >= 0 && c < input.length && input[r][c] != 'D';
     }
     static class Position {
         int r, c;
