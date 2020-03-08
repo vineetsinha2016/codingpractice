@@ -49,7 +49,8 @@ public class ZombieInMatrix {
     }
 
     static int minHours(int rows, int columns, List<List<Integer>> grid) {
-        int result =0, count=0, target=rows*columns;
+        int result =0, count=0, target=rows*columns;//take the measurement of matrix.
+        //Goal here is to keep changing adjacent 0s to ones until all become 1s.
         // Step 1 : Use Array Deque to keep all the ones in it
         Queue<Position> arrayDeque = new ArrayDeque<>();
         for (int i=0;i<rows;i++) {
@@ -63,7 +64,7 @@ public class ZombieInMatrix {
         System.out.println("Initial Count ="+count+ "and target="+target);
         //Step 2 :loop on the Array Deque and take the elements out and try to process
         while (!arrayDeque.isEmpty()) {
-            if (count==target) return result;//This is to return the result as soon as we make everything 1
+            if (count==target) return result;//This is termination condition. This is to return the result as soon as we make everything 1
             for (int i=0;i<arrayDeque.size();i++) {
                 Position  ad = arrayDeque.poll();//this will remove the element from arrayDeque
                 for (int[] dir : DIRS) {
@@ -72,7 +73,7 @@ public class ZombieInMatrix {
                     if (isSafe(grid, newr, newc)) {
                         count++;
                         grid.get(newr).set(newc, 1);
-                        arrayDeque.add(new Position(newr, newc));
+                        arrayDeque.add(new Position(newr, newc));//This will add new 1s into the matrix.
                     }
                 }
             }
