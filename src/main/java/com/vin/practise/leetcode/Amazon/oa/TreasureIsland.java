@@ -1,7 +1,6 @@
 package com.vin.practise.leetcode.Amazon.oa;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * You have a map that marks the location of a treasure island. Some of the map area has jagged rocks and dangerous reefs.
@@ -27,28 +26,35 @@ import java.util.Queue;
  */
 public class TreasureIsland {
     static int[][] DIRS = {{0,1},{0,-1},{1,0},{-1,0}};
+    static Integer[][] DIR = {{0,1},{0,-1},{1,0},{-1,0}};
 
     public static void main (String[] args) {
         char[][] grid = {{'O', 'O', 'O', 'O'}, {'D', 'O', 'D', 'O'}, {'O', 'O', 'O', 'O'},{'X', 'D', 'D', 'O'}};
         System.out.println("Result-->"+minSteps(grid));
     }
     public static int minSteps(char[][] grid) {
+        //GOAL is to start from 0,0 put it in ArrayDeque,  mark it as D(Visited) and increase the step
+        //Keep doing this and moving until you reach X. Also on the way avoid D.
         Queue<Point> queue = new ArrayDeque<>();
+        //Step 1: starting point
         queue.add(new Point(0,0));
         grid[0][0]='D';
         int steps =0;
         while(!queue.isEmpty()) {
-            steps++;
+            //Step 2: increment steps right here at start of queue
+            steps++;//Misplaced this inside isSafe Earlier.
             for (int sz = queue.size(); sz > 0; sz--) {
+                //Step 3: take out of arrayDeque and process
                 Point p = queue.poll();
 
                 for (int[] dir : DIRS) {
                     int r = p.r + dir[0];
                     int c = p.c + dir[1];
-
+                    //Step 4: check if it is safe to traverse after adding directions.
                     if (isSafe(grid, r, c)) {
+                        //Step 5: keep checking the termination condition.
                         if (grid[r][c] == 'X') return steps;
-                        grid[r][c] = 'D';
+                        grid[r][c] = 'D'; //Keep marking visited as D in grid
                         queue.add(new Point(r, c));
                     }
                 }
