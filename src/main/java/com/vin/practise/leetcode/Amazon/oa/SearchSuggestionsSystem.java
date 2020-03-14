@@ -3,6 +3,7 @@ package com.vin.practise.leetcode.Amazon.oa;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -59,7 +60,27 @@ public class SearchSuggestionsSystem {
         String searchWord = "mouse";
         System.out.println("Result -->" +suggestedProducts(products, searchWord));
     }
+
     static List<List<String>> suggestedProducts(String[] products, String searchWord) {
+        List<List<String>> result = new ArrayList<>();
+        PriorityQueue<String> pq = new PriorityQueue<>(3,(s1,s2)-> s1.compareTo(s2));
+        for (int i=1;i<=searchWord.length();i++) {
+            for (int j=0;j<products.length;j++) {
+                if (products[j].startsWith(searchWord.substring(0,i))) {
+                    pq.add(products[j]);
+                }
+            }
+            List<String> temp = new ArrayList<>();
+           for (int z=0;z<3;z++) {
+               if (pq.peek()!=null)
+                temp.add(pq.poll());
+            }
+            result.add(temp);
+            pq.clear();
+        }
+        return result;//O(KV) -->K is length of searchword and V is length of products
+    }
+    /*static List<List<String>> suggestedProducts(String[] products, String searchWord) {
         List<List<String>> ans= new ArrayList<>();
         int N=searchWord.length();
         if (N==0) return ans;
@@ -75,7 +96,7 @@ public class SearchSuggestionsSystem {
             pool=words;
         }
         return ans;
-    }
+    }*/
 
     public List<List<String>> suggestedProducts2(String[] products, String searchWord) {
         return IntStream.rangeClosed(1, searchWord.length())
