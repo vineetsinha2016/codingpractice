@@ -28,7 +28,7 @@ import java.util.*;
  */
 public class FindPairWithGivenSum {
     public static void main (String[] args) {
-        int[] nums ={1, 10, 25, 35, 60};//{20,50,40,25,30,10};
+        int[] nums ={50, 20, 10, 25, 30, 40};//{20,50,40,25,30,10};//{1, 10, 25, 35, 60};//
         int target = 90;
         System.out.println("Result-->"+ Arrays.toString(findIndexes(nums, target)));
     }
@@ -39,8 +39,9 @@ public class FindPairWithGivenSum {
         int[] result = new int[] {-1,-1};int max =0;
         for (int i=0;i<nums.length;i++) {
             if (sumMap.containsKey(newTarget-nums[i])) {
-                if (nums[i]>max || newTarget-nums[i]> max) {
-                    result = new int[] {sumMap.get(newTarget-nums[i]),i};
+                if(newTarget-nums[i] > max || nums[sumMap.get(newTarget-nums[i])] > max) {
+                    result=(new int[]{sumMap.get(newTarget-nums[i]),i});
+                    max = Math.max(newTarget-nums[i], nums[sumMap.get(newTarget-nums[i])]);
                 }
             }
             sumMap.put(nums[i],i);
