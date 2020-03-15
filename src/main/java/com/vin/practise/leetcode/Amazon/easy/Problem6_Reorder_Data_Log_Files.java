@@ -94,4 +94,6 @@ public class Problem6_Reorder_Data_Log_Files {
  * 1. How to use compare to of string (0 means same order(equal), 1 means first string was bigger(that is met condition) and -1 means second string met condition
  * 2. How to use split({expression}, limit)
  * 3. How to understand more complexity(as in first solution) results in wrong direction
+ * Time Complexity: O(nlogn)
+ * Space Complexity: O(nlogn)
  */
