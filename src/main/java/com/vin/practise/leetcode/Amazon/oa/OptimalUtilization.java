@@ -115,9 +115,9 @@ public class OptimalUtilization {
         List<List<Integer>> res = new ArrayList<>();
         int len1 = listA.size(), len2 = listB.size();
         if(len1 == 0 || len2 == 0) return res;
-        Collections.sort(listA, (a, b) -> (a.get(1) - b.get(1)));//Sort the list based on second element's value
+        listA.sort((a, b) -> (a.get(1) - b.get(1)));//Sort the list based on second element's value
         System.out.println("List A after Sorting--->"+listA);
-        Collections.sort(listB, (a, b) -> (a.get(1) - b.get(1)));//Sort the list based on second element's value
+        listB.sort(Comparator.comparingInt(a -> a.get(1)));//Sort the list based on second element's value
         System.out.println("List B after Sorting -->"+listB);
         int left = 0, right = len2 - 1, maxVal = -1;//left pointer 0 this will go till listA.size()-1(len1), right pointer listb.size() -1, max value =-1
         HashMap<Integer, List<List<Integer>>> map = new HashMap<>();
