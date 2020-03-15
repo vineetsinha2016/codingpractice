@@ -148,4 +148,11 @@ public class Problem3_SubtreeOfAnotherTree {
         }
 
     }
+    /**
+     * Complexity Analysis
+     *
+     * Time complexity : O(m*n)O(m∗n). In worst case(skewed tree) traverse function takes O(m*n)O(m∗n) time.
+     *
+     * Space complexity : O(n)O(n). The depth of the recursion tree can go upto nn. nn refers to the number of nodes in ss.
+     */
 }
