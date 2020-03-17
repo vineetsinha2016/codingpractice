@@ -43,7 +43,7 @@ public class TreasureIsland {
         while(!queue.isEmpty()) {
             //Step 2: increment steps right here at start of queue
             steps++;//Misplaced this inside isSafe Earlier.
-            for (int sz = queue.size(); sz > 0; sz--) {
+            for (int sz = queue.size(); sz > 0; sz--) {//loop on queue size to
                 //Step 3: take out of arrayDeque and process
                 Point p = queue.poll();
 
@@ -55,7 +55,7 @@ public class TreasureIsland {
                         //Step 5: keep checking the termination condition.
                         if (grid[r][c] == 'X') return steps;
                         grid[r][c] = 'D'; //Keep marking visited as D in grid
-                        queue.add(new Point(r, c));
+                        queue.add(new Point(r, c));//kepp adding this in Array deque
                     }
                 }
             }
