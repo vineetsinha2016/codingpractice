@@ -77,7 +77,7 @@ public class ZombieInMatrix {
                     }
                 }
             }
-            result++;
+            result++;//increment result after every for loop (since all change will be simultaneous in an hour
         }
         grid.forEach(x->{
             System.out.print("["+x);
