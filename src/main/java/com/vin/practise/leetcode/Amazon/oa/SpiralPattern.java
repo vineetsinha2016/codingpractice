@@ -31,8 +31,9 @@ public class SpiralPattern {
         System.out.println("Result-->"+createPattern(matrix));
     }
     static List<Integer> createPattern (int[][] matrix) {
-        //Idea is to go first row then last column then last row and then first column
         List<Integer> result = new ArrayList<>();
+        if (matrix==null || matrix.length==0) return result;
+        //Idea is to go first row then last column then last row and then first column
         int firstRow =0,lastRow=matrix.length-1;
         int firstColumn = 0, lastColumn =matrix[0].length-1;
         while (firstRow<=lastRow && firstColumn<=lastColumn) {
