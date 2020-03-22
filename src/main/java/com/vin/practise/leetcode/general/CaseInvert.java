@@ -20,7 +20,6 @@ public class CaseInvert {
         //Step 4: else change it to upper.. Here check no special characters.
         char[] chars = s.toCharArray();
         for (int i=0;i<chars.length;i++) {
-            System.out.println("chars[i]-->"+chars[i]);
             if (chars[i] <='z' && chars[i]>='a') {
                 chars[i]=Character.toUpperCase(chars[i]);
             }
