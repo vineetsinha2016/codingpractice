@@ -24,38 +24,30 @@ import java.util.HashMap;
  */
 public class Problem9_BestTimeBuySellStock {
     public static void main (String[] args) {
-        int A[] = {1,2};//{7,1,5,3,6,4};//{7,6,4,3,1};//{2,4,1};//{7,6,8,0,-1,5};//
+        int A[] = {1, 7, 2, 3, 6, 7, 6, 7};//{1,2};//{7,1,5,3,6,4};//{7,6,4,3,1};//{2,4,1};//{7,6,8,0,-1,5};//
         System.out.println("Result --->"+maxProfit(A));
     }
 
     public static int maxProfit(int[] prices) {
-        //Thought I have to decide the ith day when we should sell the stocks
-        /*int  highest=0;int lowest=0;int day=0;
-        HashMap<Integer,Integer> hashMap = new HashMap<>();
-        for (int i=0;i<prices.length;i++) {
-            hashMap.put(prices[i],i+1);
-            if (i==0) lowest=prices[i];
-            else if(lowest>prices[i]) lowest =prices[i];
-            //lowest=Math.min(lowest, prices[i]);
-            if(hashMap.containsKey(lowest) && i>hashMap.get(lowest)-1){
-                highest = Math.max(highest,prices[i]);
-            }
-            else {
-                highest=0;
-            }
-        }
-        if (highest!=0) return hashMap.get(highest);
-        System.out.println("Highest-->"+highest);
-        System.out.println("lowest--->"+lowest);
-        return day;*/
-        int lowest= 0;/*Integer.MAX_VALUE;*/int maxProfit =0;
-        for (int i=0;i<prices.length;i++) {
-            if (i==0) lowest=prices[i];
-            else if (prices[i] < lowest) {
-                lowest = prices[i];
-            }
-            else if (prices[i]-lowest > maxProfit) {
-                maxProfit = prices[i]-lowest;
+        /**
+         * Approach 3: Simple One Pass
+         * Algorithm
+         *
+         * This solution follows the logic used in Approach 2 itself, but with only a slight variation.
+         * In this case, instead of looking for every peak following a valley, we can simply go on crawling over
+         * the slope and keep on adding the profit obtained from every consecutive transaction.
+         * In the end,we will be using the peaks and valleys effectively, but we need not track the costs
+         * corresponding to the peaks and valleys along with the maximum profit, but we can directly keep on
+         * adding the difference between the consecutive numbers of the array if the second number is larger
+         * than the first one, and at the total sum we obtain will be the maximum profit.
+         * This approach will simplify the solution. This can be made clearer by taking this example:
+         *
+         * [1, 7, 2, 3, 6, 7, 6, 7]
+         */
+        int maxProfit = 0;
+        for (int i=1;i<prices.length;i++) {
+            if (prices[i]>prices[i-1]) {
+                maxProfit+=prices[i]-prices[i-1];
             }
         }
         return maxProfit;
