@@ -42,6 +42,14 @@ public class Day7_CountingElements {
         int[] nums = {1,1,3,3,5,5,7,7};//{1,2,3};//{1,1,2};//{1,3,2,3,5,0};//{1,2,3};{1,1,2,2};////
         System.out.println("Result --> "+countElements(nums));
     }
+
+    /**
+     * Idea is to put the elements in hashmap and get the count
+     * then iterate through keys and get the occurences and increment the
+     * found x+1 entries accordingly.
+     * @param arr
+     * @return
+     */
     static int countElements(int[] arr) {
         int result = 0;
         Map<Integer,Integer> map = new HashMap<>();
