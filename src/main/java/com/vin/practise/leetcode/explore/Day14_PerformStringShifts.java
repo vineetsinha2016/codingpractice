@@ -1,9 +1,5 @@
 package com.vin.practise.leetcode.explore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * You are given a string s containing lowercase English letters, and a matrix shift, where shift[i] = [direction, amount]:
@@ -81,28 +77,5 @@ public class Day14_PerformStringShifts {
         else return s;
         return front+back;
 
-    }
-    static StringBuilder moveRightAndLeft(StringBuilder sb, int[] dirPos) {
-
-        if (dirPos[0]==1) { //move right
-            Map<Character,Integer> chars = new HashMap<>();
-            System.out.println("Dirpos[1]:"+dirPos[1]);
-            for (int i=0;i<dirPos[1];i++) {
-                System.out.println("sb.length()-1-i-->"+(sb.length()-1-i));
-                chars.put(sb.charAt(sb.length()-1-i),sb.length()-1-i);
-            }
-            for (Integer i : chars.values())
-            {
-                System.out.println("Deleteing char at :"+i+" i.e "+sb.charAt(i));
-                sb.deleteCharAt(i);
-            }
-            sb.replace(0,sb.length()+chars.size(), chars.toString()+sb.toString());
-            System.out.println("sbafter modification::"+sb);
-            //sb.deleteCharAt()//sb.replace()
-        }
-        /*else {//move left
-
-        }*/
-        return sb;
     }
 }
